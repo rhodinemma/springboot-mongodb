@@ -4,7 +4,6 @@ import com.example.demo.model.Tutorial;
 import com.example.demo.repository.TutorialRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import java.util.List;
 import java.util.ArrayList;
@@ -14,8 +13,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class TutorialController {
-    @Autowired
+    final
     TutorialRepository tutorialRepository;
+
+    public TutorialController(TutorialRepository tutorialRepository) {
+        this.tutorialRepository = tutorialRepository;
+    }
 
     @GetMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {

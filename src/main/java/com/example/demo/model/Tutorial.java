@@ -7,14 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Tutorial {
     @Id
     private String id;
-
     private String title;
     private String description;
     private boolean published;
-
-    public Tutorial() {
-
-    }
 
     public Tutorial(String title, String description, boolean published) {
         this.title = title;
